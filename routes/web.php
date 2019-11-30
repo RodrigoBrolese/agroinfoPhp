@@ -11,4 +11,12 @@
 |
 */
 
-Route::get('/', 'LoginController@index');
+Route::get('/', 'LoginController@index')->middleware('checkLogin')->name('home');
+
+Route::get('/register', 'LoginController@create')->name('register');
+Route::post('/store', 'LoginController@store')->name('storeUser');
+
+Route::post('/login', 'LoginController@login')->name('login');
+Route::get('/logout', 'LoginController@logout')->name('logout');
+
+Route::get('/dashbord', 'DashbordController@index')->name('dashbord')->middleware('auth');
