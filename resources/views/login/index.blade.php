@@ -7,9 +7,17 @@
 @section('content')
     <div class="wrapper__background__img"></div>
 
-    <div class="wrapper__login card card-image">
+    <div class="wrapper__login z-depth-5">
         <h1 class="wrapper__login__header">Agroinfo</h1>
         <form action="{{ route('login') }}" method="POST" class="login__wrapper__form">
+
+            @error('incorrect')
+                <div class="login__error" data-error="{{ $message }}"></div>
+            @enderror
+
+            <input style="display:none" type="text" name="fakeusernameremembered"/>
+            <input style="display:none" type="password" name="fakepasswordremembered"/>
+
             @csrf
             <div class="input-field">
                 <label for="fild__email">E-mail</label>
@@ -34,3 +42,7 @@
     </div>
 
 @endsection
+
+@section('script')
+    <script src="{{ asset('js/login/script.js') }}"></script>
+@stop

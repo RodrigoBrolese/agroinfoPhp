@@ -10,7 +10,7 @@
     <title>Agroinfo @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('style')
 </head>
 
@@ -38,7 +38,7 @@
 
     <script src="{{ asset('js/materialize.min.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')
 </body>
 </html>

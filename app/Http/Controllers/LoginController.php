@@ -27,7 +27,7 @@ class LoginController extends Controller
             return redirect()->route('dashbord');
         }
 
-        return redirect('/');
+        return redirect('/')->withErrors(['incorrect' => 'E-mail ou senha incorretos']);
 
     }
 
