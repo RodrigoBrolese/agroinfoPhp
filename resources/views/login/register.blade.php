@@ -3,9 +3,9 @@
 @section('title')
     - Cadastrar
 @endsection
-
+{{dd(json_encode(array_values([97,92]), JSON_FORCE_OBJECT))}}
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/login/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('storage/css/login/register.css') }}">
 @stop
 
 @section('content')
@@ -77,5 +77,5 @@
 @stop
 
 @section('script')
-    <script src="{{ asset('js/login/register.js') }}"></script>
+    <script src="{{ asset('storage/js/login/register.js') }}"></script>
 @stop

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class DashbordController extends Controller
@@ -14,6 +15,12 @@ class DashbordController extends Controller
      */
     public function index()
     {
-        dd('under construnction');
+        $product = new Product();
+
+        $product->user_id = 4;
+        $product->name = 4;
+        $product->type = 4;
+        $product->save();
+        $product->save();
     }
 }
