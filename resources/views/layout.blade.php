@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Agroinfo @yield('title')</title>
 
-    <link rel="stylesheet" href="{{ asset('storage/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('storage/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('style')
 </head>
 
@@ -36,9 +36,9 @@
         @yield('content')
     </main>
 
-    <script src="{{ asset('storage/js/materialize.min.js') }}"></script>
-    <script src="{{ asset('storage/js/axios.min.js') }}"></script>
-    <script src="{{ asset('storage/js/app.js') }}"></script>
+    <script src="{{ asset('js/materialize.min.js') }}"></script>
+    <script src="{{ asset('js/axios.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')
 </body>
 </html>
