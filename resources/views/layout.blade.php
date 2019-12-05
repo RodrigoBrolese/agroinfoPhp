@@ -9,36 +9,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Agroinfo @yield('title')</title>
 
-    <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     @yield('style')
 </head>
 
 <body>
     @if (Route::currentRouteName() !== 'home')
         <header>
-            <nav>
+            <nav class="nav-extended">
                 <div class="nav-wrapper">
-                    <a href="{{ route(Auth::check() ? 'dashbord' : 'home') }}" class="brand-logo">Agroinfo</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        @if (Auth::check())
-                            <li><a href="#">Sass</a></li>
-                            <li><a href="#">Components</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        @endif
-                    </ul>
+                    <a href="{{ route(Auth::check() ? 'dashboard' : 'home') }}" class="brand-logo left">Agroinfo</a>
                 </div>
             </nav>
         </header>
     @endif
 
-    <main>
+    <main id="app">
         @yield('content')
     </main>
 
-    <script src="{{ asset('js/materialize.min.js') }}"></script>
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/materialize.min.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     @yield('script')
 </body>
 </html>

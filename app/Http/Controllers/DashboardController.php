@@ -15,12 +15,6 @@ class DashbordController extends Controller
      */
     public function index()
     {
-        $product = new Product();
-
-        $product->user_id = 4;
-        $product->name = 4;
-        $product->type = 4;
-        $product->save();
-        $product->save();
+        return view('dashbord.index');
     }
 }
