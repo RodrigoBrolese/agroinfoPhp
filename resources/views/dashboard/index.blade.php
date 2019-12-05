@@ -3,9 +3,8 @@
 @section('style')
 
 @endsection
-
 @section('content')
-    <div id="example"></div>
+    <example-component :teste="'{{ 'tea' }}'"></example-component>
 @endsection
 
 @section('script')

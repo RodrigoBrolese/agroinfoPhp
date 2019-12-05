@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('LoginLayout')
 
 @section('title')
     - Cadastrar
