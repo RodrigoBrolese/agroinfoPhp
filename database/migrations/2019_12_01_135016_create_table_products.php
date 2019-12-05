@@ -18,6 +18,7 @@ class CreateTableProducts extends Migration
             $table->bigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
+            $table->float('hectare');
             $table->string('type', 100);
             $table->timestamps();
         });

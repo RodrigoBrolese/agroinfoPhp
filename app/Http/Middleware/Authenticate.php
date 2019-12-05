@@ -18,6 +18,6 @@ class Authenticate extends Middleware
             return route('home');
         }
 
-        return route('dashbord');
+        return route('dashboard');
     }
 }

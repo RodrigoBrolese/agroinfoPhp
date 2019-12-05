@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 
-class DashbordController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,6 +15,6 @@ class DashbordController extends Controller
      */
     public function index()
     {
-        return view('dashbord.index');
+        return view('dashboard.index');
     }
 }

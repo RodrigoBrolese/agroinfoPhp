@@ -5,7 +5,7 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/login/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/register/style.css') }}">
 @stop
 
 @section('content')
@@ -74,8 +74,4 @@
             </div>
         </form>
     </div>
-@stop
-
-@section('script')
-    <script src="{{ asset('storage/js/login/register.js') }}"></script>
 @stop

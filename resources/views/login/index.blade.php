@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/login/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/login/style.css') }}">
 @endsection
 
 @section('content')
@@ -44,5 +44,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/login/script.js') }}"></script>
+    <script src="{{ asset('assets/js/login/script.js') }}"></script>
 @stop

@@ -13,10 +13,10 @@
 
 Route::get('/', 'LoginController@index')->middleware('checkLogin')->name('home');
 
-Route::get('/register', 'LoginController@create')->name('register');
-Route::post('/store', 'LoginController@store')->name('storeUser');
+Route::get('/register', 'RegisterController@index')->name('register')->middleware('checkLogin');
+Route::post('/store', 'RegisterController@store')->name('storeUser');
 
-Route::post('/login', 'LoginController@login')->name('login')->middleware('auth');
+Route::post('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
-Route::get('/dashbord', 'DashbordController@index')->name('dashbord')->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
