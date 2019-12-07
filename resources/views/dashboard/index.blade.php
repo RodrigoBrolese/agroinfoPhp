@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-    <example-component :teste="'{{ 'tea' }}'"></example-component>
+
 @endsection
 
 @section('script')

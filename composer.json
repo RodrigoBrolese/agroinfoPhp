@@ -10,9 +10,9 @@
     "require": {
         "php": "^7.4",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.2",
+        "laravel/framework": "^6.6",
         "laravel/tinker": "^1.0",
-      "ext-json": "*"
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

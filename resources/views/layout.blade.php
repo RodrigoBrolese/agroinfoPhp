@@ -16,10 +16,18 @@
 </head>
 
 <body>
+    <div id="app">
+        <nav-bar :logout-route="'{{ route('logout') }}'"></nav-bar>
 
-    <main id="app">
-        @yield('content')
-    </main>
+        <main>
+
+
+            @yield('content')
+        </main>
+
+
+
+    </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')

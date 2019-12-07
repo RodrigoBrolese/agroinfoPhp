@@ -14,18 +14,6 @@ Vue.use(Vuetify);
 
 window.Vue = Vue;
 
-// Vue.use(Vuetify, {
-//   theme: {
-//     primary: '#4caf50',
-//     secondary: '#009688',
-//     accent: '#2196f3',
-//     error: '#f44336',
-//     warning: '#ffc107',
-//     info: '#607d8b',
-//     success: '#8bc34a'
-//   }
-// });
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -37,7 +25,7 @@ window.Vue = Vue;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('nav-bar', require('./components/Nav/Nav.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
