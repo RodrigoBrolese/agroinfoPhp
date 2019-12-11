@@ -1,6 +1,6 @@
 <?php
 
-return [
+$app = [
 
     /*
     |--------------------------------------------------------------------------
@@ -163,9 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        * Package Service Providers...
+        */
 
         /*
          * Application Service Providers...
@@ -230,3 +229,15 @@ return [
     ],
 
 ];
+
+if ($app['env'] !== 'production') {
+    $app['providers'] = [
+        ...$app['providers'],
+        /*
+        * Dev Package Service Providers...
+        */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+    ];
+}
+
+return $app;
