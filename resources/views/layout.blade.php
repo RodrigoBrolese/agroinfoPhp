@@ -29,7 +29,7 @@
             'products' => [
                 'title' => __('Produtos'),
                 'icon' => 'work',
-                'route' => '#',
+                'route' => route('products'),
                 'disabled' => false,
             ],
             'buyers' => [
@@ -62,7 +62,10 @@
 
                 <side-nav :menu-itens="' {{ json_encode($menuItens) }}' "></side-nav>
 
-                @yield('content')
+                <div class="content__wrapper">
+                    @yield('content')
+                </div>
+
             </main>
         </v-app>
 

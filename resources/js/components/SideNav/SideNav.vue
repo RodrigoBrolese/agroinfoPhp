@@ -4,6 +4,7 @@
                 width="220"
                 height="100%"
                 class="d-none d-md-flex"
+                :elevation="1"
         >
             <v-navigation-drawer permanent>
                 <NavList :menu-itens="menuItens"/>

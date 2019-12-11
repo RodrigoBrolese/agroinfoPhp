@@ -1,4 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=6247ec8653e7c1973b21",
+    "/css/app.css": "/css/app.css?id=c033a8292e275431fd63",
+    "/js/footer-app.bundle.js": "/js/footer-app.bundle.js?id=d9ac3a5679bd52e2b7d4",
+    "/js/nav-bar.bundle.js": "/js/nav-bar.bundle.js?id=fcbedbc2991fa2d507cc",
+    "/js/side-nav.bundle.js": "/js/side-nav.bundle.js?id=e842797ea25cc3c903a9"
 }

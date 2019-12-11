@@ -26,9 +26,24 @@ window.Vue = Vue;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('nav-bar', require('./components/Nav/Nav.vue').default);
-Vue.component('footer-app', require('./components/Footer/Footer.vue').default);
-Vue.component('side-nav', require('./components/SideNav/SideNav.vue').default);
+Vue.component(
+    'nav-bar',
+  () => import(/* webpackChunkName: "nav-bar" */ './components/Nav/Nav.vue')
+);
+
+Vue.component(
+    'footer-app',
+  () => import(/* webpackChunkName: "footer-app" */ './components/Footer/Footer.vue')
+);
+
+Vue.component(
+    'side-nav',
+  () => import(/* webpackChunkName: "side-nav" */ './components/SideNav/SideNav.vue')
+);
+
+// Vue.component('nav-bar', require('./components/Nav/Nav.vue').default);
+// Vue.component('footer-app', require('./components/Footer/Footer.vue').default);
+// Vue.component('side-nav', require('./components/SideNav/SideNav.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

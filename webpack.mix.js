@@ -1,5 +1,14 @@
 const mix = require('laravel-mix');
 
+/**
+ * Override Laravel Mix Webpack Configuration
+ * @type {{chunkFilename: string, publicPath: string}}
+ */
+mix.config.webpackConfig.output = {
+    chunkFilename: 'js/[name].bundle.js',
+    publicPath: '/',
+};
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,4 +21,4 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss','public/css');
+  .sass('resources/sass/app.scss','public/css').version();

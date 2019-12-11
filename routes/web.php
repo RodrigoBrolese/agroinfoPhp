@@ -20,3 +20,5 @@ Route::post('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+
+Route::get('/products', 'ProductsController@index')->name('products')->middleware('auth');

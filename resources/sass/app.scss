@@ -9,7 +9,19 @@
   --secundary-color-ligth: #c1ff7a;
 }
 
+* {
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+}
+
 .main__wrapper {
   display: flex;
   height: 100%;
+  background-color: #FFFFFF;
+
+  .content__wrapper {
+    padding: 10px;
+    width: 100%;
+  }
 }

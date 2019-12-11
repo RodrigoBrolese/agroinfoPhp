@@ -1,7 +1,7 @@
 <template>
 
     <div class="app__wrapper">
-        <v-app-bar color="primary" clipped-right>
+        <v-app-bar color="primary" clipped-right :elevation="2">
             <v-app-bar-nav-icon @click.stop="isOpen = !isOpen" class="d-md-none"/>
 
             <v-toolbar-title>Agroinfo</v-toolbar-title>
