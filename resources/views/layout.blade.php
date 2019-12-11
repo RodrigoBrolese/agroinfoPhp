@@ -16,16 +16,55 @@
 </head>
 
 <body>
+
+    @php
+
+        $menuItens = [
+            'dashboard' => [
+                'title' => 'Home',
+                'icon' => 'home',
+                'route' => route('dashboard'),
+                'disabled' => false,
+            ],
+            'products' => [
+                'title' => __('Produtos'),
+                'icon' => 'work',
+                'route' => '#',
+                'disabled' => false,
+            ],
+            'buyers' => [
+                'title' => __('Compradores'),
+                'icon' => 'store',
+                'route' => '#',
+                'disabled' => true,
+            ],
+            'seles' => [
+                'title' => __('Vendas'),
+                'icon' => 'shopping_basket',
+                'route' => '#',
+                'disabled' => true,
+            ],
+        ];
+
+        $menuItens[Route::getCurrentRoute()->getName()]['selected'] = true;
+
+    @endphp
+
     <div id="app">
-        <nav-bar :logout-route="'{{ route('logout') }}'"></nav-bar>
+        <v-app>
 
-        <main>
+            <nav-bar :logout-route="'{{ route('logout') }}'"
+                    :menu-itens="'{{json_encode($menuItens)}}'">
 
+            </nav-bar>
 
-            @yield('content')
-        </main>
+            <main class="main__wrapper">
 
+                <side-nav :menu-itens="' {{ json_encode($menuItens) }}' "></side-nav>
 
+                @yield('content')
+            </main>
+        </v-app>
 
     </div>
 

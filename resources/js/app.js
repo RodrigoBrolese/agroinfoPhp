@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import Vue from "vue";
 import Vuetify from 'vuetify';
 
@@ -26,6 +27,8 @@ window.Vue = Vue;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('nav-bar', require('./components/Nav/Nav.vue').default);
+Vue.component('footer-app', require('./components/Footer/Footer.vue').default);
+Vue.component('side-nav', require('./components/SideNav/SideNav.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,6 +49,9 @@ const vuetify = new Vuetify({
           success: '#8bc34a'
       },
     },
+  },
+  icons: {
+    iconfont: 'md',
   }
 });
 
