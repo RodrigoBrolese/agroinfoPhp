@@ -1,16 +1,15 @@
 @extends('layout')
 
-@section('style')
-
-@endsection
 @section('content')
-    @forelse($products as $product)
-        <div>{{$product->id}}</div>
-    @empty
-        <div></div>
-    @endforelse
-@endsection
 
-@section('script')
+    <product
+        :title="'{{ __('produtos') }}'"
+        :button-text="'{{__('novo') . ' ' . __('produto')}}'"
+        :headers="'{{ $tableHeaders }}'"
+        :get="'{{ route('getProducts') }}'"
+        :store="'{{ route('storeProducts') }}'"
+        ref="p"
+    >
 
+    </product>
 @endsection

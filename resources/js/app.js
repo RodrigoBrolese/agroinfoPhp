@@ -7,12 +7,12 @@
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import Vue from "vue";
 import Vuetify from 'vuetify';
+import pt from 'vuetify/src/locale/pt.ts'
 
 
 require('./bootstrap');
 
 Vue.use(Vuetify);
-
 window.Vue = Vue;
 
 /**
@@ -28,18 +28,24 @@ window.Vue = Vue;
 
 Vue.component(
     'nav-bar',
-  () => import(/* webpackChunkName: "nav-bar" */ './components/Nav/Nav.vue')
+  () => import(/* webpackChunkName: "nav-bar" */ './components/Layout/Nav.vue')
 );
 
 Vue.component(
     'footer-app',
-  () => import(/* webpackChunkName: "footer-app" */ './components/Footer/Footer.vue')
+  () => import(/* webpackChunkName: "footer-app" */ './components/Layout/Footer.vue')
 );
 
 Vue.component(
     'side-nav',
-  () => import(/* webpackChunkName: "side-nav" */ './components/SideNav/SideNav.vue')
+  () => import(/* webpackChunkName: "side-nav" */ './components/Layout/SideNav.vue')
 );
+
+Vue.component(
+    'product',
+  () => import(/* webpackChunkName: "data-table" */ './components/Products/Index.vue')
+);
+
 
 // Vue.component('nav-bar', require('./components/Nav/Nav.vue').default);
 // Vue.component('footer-app', require('./components/Footer/Footer.vue').default);
@@ -67,6 +73,10 @@ const vuetify = new Vuetify({
   },
   icons: {
     iconfont: 'md',
+  },
+  lang: {
+    locales: { pt },
+    current: 'pt'
   }
 });
 

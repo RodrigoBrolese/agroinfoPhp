@@ -5,6 +5,7 @@
                 height="100%"
                 class="d-none d-md-flex"
                 :elevation="1"
+                app
         >
             <v-navigation-drawer permanent>
                 <NavList :menu-itens="menuItens"/>
@@ -18,7 +19,7 @@
 
 <script>
 
-  import NavList from '../NavList/index'
+  import NavList from './NavList'
 
   export default {
     props: [

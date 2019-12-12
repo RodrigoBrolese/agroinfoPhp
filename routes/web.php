@@ -22,3 +22,11 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
 Route::get('/products', 'ProductsController@index')->name('products')->middleware('auth');
+
+
+Route::middleware(['authApi', 'ajax'])->group(
+    static function () {
+        Route::get('/products/get', 'ProductsController@get')->name('getProducts');
+        Route::post('/products', 'ProductsController@store')->name('storeProducts');
+    }
+);

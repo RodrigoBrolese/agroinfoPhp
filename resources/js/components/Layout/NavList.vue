@@ -1,5 +1,5 @@
 <template>
-    <v-list nav dense flat>
+    <v-list nav dense flat app>
         <v-list-item
                 v-for="(item, i) in JSON.parse(menuItens)"
                 :key="i"

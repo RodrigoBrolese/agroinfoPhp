@@ -16,9 +16,12 @@
 }
 
 .main__wrapper {
-  display: flex;
   height: 100%;
   background-color: #FFFFFF;
+
+  .v-content__wrap {
+    display: flex;
+  }
 
   .content__wrapper {
     padding: 10px;

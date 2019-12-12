@@ -58,15 +58,15 @@
 
             </nav-bar>
 
-            <main class="main__wrapper">
+            <v-content class="main__wrapper">
 
                 <side-nav :menu-itens="' {{ json_encode($menuItens) }}' "></side-nav>
 
-                <div class="content__wrapper">
-                    @yield('content')
-                </div>
+                    <div class="content__wrapper">
+                        @yield('content')
+                    </div>
 
-            </main>
+            </v-content>
         </v-app>
 
     </div>

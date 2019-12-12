@@ -1,7 +1,7 @@
 <template>
 
     <div class="app__wrapper">
-        <v-app-bar color="primary" clipped-right :elevation="2">
+        <v-app-bar color="primary" clipped-right :elevation="2" app>
             <v-app-bar-nav-icon @click.stop="isOpen = !isOpen" class="d-md-none"/>
 
             <v-toolbar-title>Agroinfo</v-toolbar-title>
@@ -37,7 +37,7 @@
 
 <script>
 
-  import NavList from '../NavList/index'
+  import NavList from './NavList'
 
   export default {
     props: [
@@ -62,6 +62,10 @@
 
 <style lang="scss">
     .app__wrapper {
+        .v-toolbar__title {
+            padding-left: 0 !important;
+        }
+
         .v-toolbar__title, .v-app-bar__nav-icon, .v-btn--round {
             color: #fff !important;
         }
