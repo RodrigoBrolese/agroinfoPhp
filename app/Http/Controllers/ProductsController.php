@@ -39,7 +39,7 @@ class ProductsController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'max:255'],
-            'hectare' => ['required', 'numeric'],
+            'hectare' => ['required', 'numeric', 'min:0'],
             'type' => ['required', 'max:100'],
         ]);
 
