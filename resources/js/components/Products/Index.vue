@@ -2,8 +2,8 @@
     <v-data-table
             :headers="JSON.parse(headers)"
             :items="values"
-            class="elevation-1"
-            :loading="loading"
+            class="elevation-4"
+            :loading="loadingTable"
     >
         <template v-slot:top>
             <v-toolbar flat>
@@ -17,8 +17,8 @@
                 <CreateProduct
                     :title="buttonText"
                     :store="store"
-                    ref="teste"
-                    @update="handleCreate()"
+                    ref="dialog"
+                    @update="handleCreate"
                 > </CreateProduct>
             </v-toolbar>
         </template>
@@ -26,7 +26,7 @@
             <v-icon
                     small
                     class="mr-2"
-                    @click="editProduct(item)"
+                    @click="editProduct(item.id)"
             >
                 edit
             </v-icon>
@@ -36,6 +36,18 @@
             >
                 delete
             </v-icon>
+            <v-overlay :value="loading" :opacity="0.1">
+                <v-progress-circular indeterminate size="64" color="#27632a"> </v-progress-circular>
+            </v-overlay>
+            <div class="snack__wrapper">
+                <v-snackbar
+                        v-model="snackbar"
+                        color="sucess"
+                        :timeout="3000"
+                >
+                    {{successMsg}}
+                </v-snackbar>
+            </div>
         </template>
     </v-data-table>
 </template>
@@ -50,31 +62,49 @@
       'buttonText',
       'headers',
       'get',
-      'store'
+      'store',
     ],
     created() {
-      this.initialize()
+      this.initialize();
     },
     watch: {
       dialog (val) {
-        val || this.close()
+        val || this.close();
       },
     },
     methods: {
       async initialize() {
+
+        this.loadingTable = true;
 
         let products = [];
         products = await axios.get(this.$props.get).then(function (response) {
           return response.data.products;
         });
 
-        this.loading = false;
+        this.loadingTable = false;
         this.values = products;
       },
-      async editProduct(product) {
+      async editProduct(id) {
+        this.loading = true;
+
+        let editValues = await axios.get(`${this.$props.store}/${id}`).then(function (response) {
+          return response.data.product;
+        });
+
+        this.loading = false;
+
+        this.$refs.dialog.open(editValues);
 
       },
-      handleCreate() {
+      handleCreate(successMsg) {
+
+        let msg = successMsg || '';
+
+        if (msg.length !== 0) {
+          this.successMsg = msg;
+          this.snackbar = true;
+        }
         this.initialize();
       }
     },
@@ -84,7 +114,12 @@
     name: "DataTable",
     data() {
       return {
-        loading: true,
+        loadingTable: true,
+        loading: false,
+        openDialog: false,
+        snackbar: false,
+        successMsg: '',
+        editValues: {},
         values: []
       }
     }
@@ -94,5 +129,9 @@
 <style lang="scss">
     .v-toolbar__title {
         text-transform: capitalize;
+    }
+
+    .v-snack__wrapper {
+        box-shadow: initial !important;
     }
 </style>

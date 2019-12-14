@@ -29,7 +29,7 @@ class ProductsController extends Controller
 
     public function get(Request $request)
     {
-        $products = Product::where('user_id', Auth::user()->id)->get()->toArray();
+        $products = Product::where('user_id', Auth::user()->id)->orderBy('id')->get()->toArray();
 
         return response()->json(['products' => $products], 200);
 
@@ -37,11 +37,7 @@ class ProductsController extends Controller
 
     public function store(Request $request) {
 
-        $data = $request->validate([
-            'name' => ['required', 'max:255'],
-            'hectare' => ['required', 'numeric', 'min:0'],
-            'type' => ['required', 'max:100'],
-        ]);
+        $data = $this->validateRequest($request);
 
         $data['user_id'] = \Auth::user()->id;
 
@@ -49,6 +45,32 @@ class ProductsController extends Controller
 
         return response()->json(['message' => __('Cadastro realizado com sucesso')], 200);
 
+    }
+
+    public function show($id)
+    {
+        return response()->json(['product' => Product::whereUserId(Auth::user()->id)->findOrFail($id)]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $data = $this->validateRequest($request);
+
+        $product = Product::whereUserId(Auth::user()->id)->findOrFail($id);
+
+        $product->update($data);
+
+        return response()->json(['message' => __('Alteração realizado com sucesso')], 200);
+
+    }
+
+    private function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'name' => ['required', 'max:255'],
+            'hectare' => ['required', 'numeric', 'min:0'],
+            'type' => ['required', 'max:100'],
+        ]);
     }
 
 }

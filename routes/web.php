@@ -26,7 +26,9 @@ Route::get('/products', 'ProductsController@index')->name('products')->middlewar
 
 Route::middleware(['authApi', 'ajax'])->group(
     static function () {
-        Route::get('/products/get', 'ProductsController@get')->name('getProducts');
-        Route::post('/products', 'ProductsController@store')->name('storeProducts');
+        Route::get('/products/get', 'ProductsController@get')->name('products.get');
+        Route::post('/products', 'ProductsController@store')->name('products.store');
+        Route::get('/products/{id}', 'ProductsController@show')->name('products.edit');
+        Route::patch('/products/{id}', 'ProductsController@update')->name('products.update');
     }
 );

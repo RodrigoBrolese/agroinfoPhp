@@ -18,11 +18,14 @@
                             type="number"
                             v-model.number="form.hectare"
                             :error-messages="errors.hectare"
+                            hint="Área plantada"
                     > </v-text-field>
                     <v-text-field
                             label="Tipo"
                             v-model.trim="form.type"
                             :error-messages="errors.type"
+                            hint="Grão, cereal, ..."
+                            autocomplete="new-password"
                     > </v-text-field>
 
                     <div class="group__button">
@@ -32,41 +35,36 @@
                 </div>
             </v-card-text>
         </v-card>
-        <div class="snack__wrapper">
-            <v-snackbar
-                    v-model="snackbar"
-                    absolute
-                    color="sucess"
-                    class="snack"
-                    :multi-line="true"
-                    :timeout="3000"
-            >
-                {{successMsg}}
-                <v-btn
-                        color="primary"
-                        text
-                        @click="close()"
-                >
-                    Close
-                </v-btn>
-            </v-snackbar>
-        </div>
+
     </v-dialog>
 </template>
 
 <script>
   export default {
-    props: [
-      'title',
-      'store'
-    ],
+    props: {
+      title: String,
+      store: String,
+    },
     methods: {
       close() {
         this.dialog = false;
-        this.snackbar = false;
+        let successMsg = this.successMsg;
         Object.assign(this.$data, this.$options.data());
 
-        this.$emit('update');
+        this.$emit('update', successMsg);
+
+      },
+      open(editValues = {}) {
+        this.dialog = true;
+
+        if (editValues !== {}) {
+            this.form = {
+              id: editValues.id,
+              name: editValues.name,
+              hectare: editValues.hectare,
+              type: editValues.type,
+            }
+        }
 
       },
       async save() {
@@ -74,6 +72,14 @@
         this.loading = true;
         let form = this.form;
 
+        if (form.id === undefined) {
+          this.create(form);
+        } else {
+          this.edit(form);
+        }
+
+      },
+      create(form) {
         axios.post(this.$props.store, {
           'name': form.name,
           'hectare': form.hectare,
@@ -81,11 +87,32 @@
         }).then((response) => {
 
           this.successMsg = response.data.message;
-          this.snackbar = true;
 
-          setTimeout(() => {
-            this.close();
-          }, 3000);
+          // this.close();
+
+        }).catch((error) => {
+
+          let serverErrors = error.response.data.errors;
+          this.errors.name = serverErrors.name ? serverErrors.name.join(', ') : '';
+          this.errors.hectare = serverErrors.hectare ? serverErrors.hectare.join(', ') : '';
+          this.errors.type = serverErrors.type ? serverErrors.type.join(', ') : '';
+
+        }).finally(() => {
+
+          this.loading = false;
+
+        });
+      },
+      edit(form) {
+        axios.patch(this.$props.store + `/${form.id}`, {
+          'name': form.name,
+          'hectare': form.hectare,
+          'type': form.type,
+        }).then((response) => {
+
+          this.successMsg = response.data.message;
+
+          this.close();
 
         }).catch((error) => {
 
@@ -139,10 +166,10 @@
 
             button {
                 margin-right: 15px;
-            }
 
-            button:last-of-type {
-                margin-right: 0;
+                &:last-of-type {
+                    margin-right: 0;
+                }
             }
         }
 

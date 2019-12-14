@@ -4,7 +4,10 @@
         <v-app-bar color="primary" clipped-right :elevation="2" app>
             <v-app-bar-nav-icon @click.stop="isOpen = !isOpen" class="d-md-none"/>
 
-            <v-toolbar-title>Agroinfo</v-toolbar-title>
+            <div>
+
+                <v-toolbar-title> Agroinfo</v-toolbar-title>
+            </div>
 
             <v-spacer/>
 
