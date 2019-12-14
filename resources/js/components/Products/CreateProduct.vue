@@ -88,7 +88,7 @@
 
           this.successMsg = response.data.message;
 
-          // this.close();
+          this.close();
 
         }).catch((error) => {
 
