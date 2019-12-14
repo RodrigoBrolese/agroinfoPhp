@@ -28,7 +28,8 @@ Route::middleware(['authApi', 'ajax'])->group(
     static function () {
         Route::get('/products/get', 'ProductsController@get')->name('products.get');
         Route::post('/products', 'ProductsController@store')->name('products.store');
-        Route::get('/products/{id}', 'ProductsController@show')->name('products.edit');
+        Route::get('/products/{id}', 'ProductsController@show')->name('products.show');
         Route::patch('/products/{id}', 'ProductsController@update')->name('products.update');
+        Route::delete('/products/{id}', 'ProductsController@delete')->name('products.delete');
     }
 );

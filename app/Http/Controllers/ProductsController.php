@@ -64,6 +64,20 @@ class ProductsController extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $product = Product::whereUserId(Auth::user()->id)->findOrFail($id);
+
+        try {
+            $product->delete($id);
+        } catch (\Exception $e) {
+            return response()->json(['message' => __('Erro desconhecido')], 500);
+        }
+
+        return response()->json(['message' => __('Exclusão realizada com sucesso')], 200);
+
+    }
+
     private function validateRequest(Request $request)
     {
         return $request->validate([

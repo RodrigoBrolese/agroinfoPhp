@@ -2,7 +2,7 @@
 
 :root {
   --primary-color-dark: #27632a;
-  --primary-color: #4caf50;
+  --primary-color: #4aa54e;
   --primary-color-ligth: #5fa463;
   --secundary-color-dark: #7cb23e;
   --secundary-color: #b2ff59;
@@ -26,5 +26,10 @@
   .content__wrapper {
     padding: 10px;
     width: 100%;
+    @media only screen and (max-width: 600px) {
+        padding: 10px 0;
+    }
   }
+
+
 }

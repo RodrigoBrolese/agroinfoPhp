@@ -2,7 +2,7 @@
     <v-data-table
             :headers="JSON.parse(headers)"
             :items="values"
-            class="elevation-4"
+            class="elevation-2 table__wrapper"
             :loading="loadingTable"
     >
         <template v-slot:top>
@@ -18,7 +18,7 @@
                     :title="buttonText"
                     :store="store"
                     ref="dialog"
-                    @update="handleCreate"
+                    @update="handleUpdate"
                 > </CreateProduct>
             </v-toolbar>
         </template>
@@ -32,7 +32,7 @@
             </v-icon>
             <v-icon
                     small
-                    @click="deleteItem(item)"
+                    @click="deleteItem(item.id)"
             >
                 delete
             </v-icon>
@@ -42,11 +42,13 @@
             <div class="snack__wrapper">
                 <v-snackbar
                         v-model="snackbar"
-                        color="sucess"
+                        :color="snackColor"
+                        class=""
                         :timeout="3000"
                 >
                     {{successMsg}}
                 </v-snackbar>
+                <ConfirmDialog ref="confirmDialog"> </ConfirmDialog>
             </div>
         </template>
     </v-data-table>
@@ -55,6 +57,7 @@
 <script>
 
   import CreateProduct from "./CreateProduct";
+  import ConfirmDialog from "../ConfirmDialog";
 
   export default {
     props: [
@@ -97,7 +100,7 @@
         this.$refs.dialog.open(editValues);
 
       },
-      handleCreate(successMsg) {
+      handleUpdate(successMsg) {
 
         let msg = successMsg || '';
 
@@ -106,10 +109,32 @@
           this.snackbar = true;
         }
         this.initialize();
+      },
+      async deleteItem(id) {
+
+        if (await this.$refs.confirmDialog.open({
+          title: 'Atenção',
+          message: 'Deseja realmente excluir esse produto?',
+          color: 'warning',
+          confirmText: 'Sim',
+          cancelText: 'Cancelar',
+        })) {
+
+          this.loading = true;
+
+          axios.delete(`${this.$props.store}/${id}`).then((response) => {
+            this.handleUpdate(response.data.message);
+          }).finally(() => {
+            this.loading = false;
+          });
+
+        }
+
       }
     },
     components: {
-      CreateProduct
+      CreateProduct,
+      ConfirmDialog
     },
     name: "DataTable",
     data() {
@@ -118,6 +143,7 @@
         loading: false,
         openDialog: false,
         snackbar: false,
+        snackColor: 'success',
         successMsg: '',
         editValues: {},
         values: []
@@ -127,11 +153,20 @@
 </script>
 
 <style lang="scss">
-    .v-toolbar__title {
-        text-transform: capitalize;
-    }
 
-    .v-snack__wrapper {
-        box-shadow: initial !important;
+    .table__wrapper {
+
+        .v-toolbar__title {
+            text-transform: capitalize;
+        }
+
+        .v-snack__wrapper {
+            box-shadow: initial !important;
+        }
+
+        .v-data-table__mobile-row {
+            min-height: 40px;
+        }
+
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark class="mb-2" v-on="on">{{title}}</v-btn>
+            <v-btn color="primary" v-on="on">{{title}}</v-btn>
         </template>
         <v-card>
             <v-card-title class="headline text-capitalize">{{ title }}</v-card-title>

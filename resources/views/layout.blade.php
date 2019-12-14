@@ -8,8 +8,8 @@
 
     <link rel="icon" type="image/svg" href="{{ asset('assets/images/favicon.png') }}">
 
-    <meta name="theme-color" content="#4caf50">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#4caf50">
+    <meta name="theme-color" content="#4aa54e">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4aa54e">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Agroinfo @yield('title')</title>

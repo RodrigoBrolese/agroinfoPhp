@@ -61,13 +61,13 @@ const vuetify = new Vuetify({
   theme: {
     themes: {
       light: {
-          primary: '#4caf50',
+          primary: '#4aa54e',
           secondary: '#009688',
           accent: '#2196f3',
           error: '#f44336',
           warning: '#ffc107',
           info: '#607d8b',
-          success: '#8bc34a'
+          success: '#7cb23e'
       },
     },
   },
